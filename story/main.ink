@@ -2,7 +2,10 @@
 
 === main_menu ===
 \ 
+<b>You are in your cabin and decide what next to do...</b>
 + Play Whack A Mole [] -> whack_a_mole
++ Fight a real knight of flesh and blood[]. 
+  -> fight_a_knight
 + Do nothing [] -> main_menu
 + End this madness [] -> game_end
 
@@ -34,6 +37,34 @@ The {&mole|{&nasty|blasted|foul} {&creature|rodent}} is {in here somewhere|hidin
 +   -> 
     -> main_menu
 
+=== fight_a_knight ===
+\
+
+You died.
+
+* ...
+
+- Get good.
+
+* Seymour is graceful[]. 
+
+- The blackness leaves your mind only to leave you in a whirlpool of sensations. 
+
+* You try to open your eyes[] and see everything swirling around!
+
+-
+* What the... []
+- Suddenly a loud bang blinds your ears and eyes. 
+
+- Your whole body burns from within through without.
+
+- The pain numbs down.
+
+* You try to open your swollen eyes[] you see something familiar.
+
+-
+
+-> main_menu
 // + Swing
 // + Stab
 // + Slash down
