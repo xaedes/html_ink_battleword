@@ -6,6 +6,7 @@
 + Play Whack A Mole [] -> whack_a_mole
 + Fight a real knight of flesh and blood[]. 
   -> fight_a_knight
++ Pray to Seymour[]. -> pray_to_seymour
 + Do nothing [] -> main_menu
 + End this madness [] -> game_end
 
@@ -42,8 +43,8 @@ The {&mole|{&nasty|blasted|foul} {&creature|rodent}} is {in here somewhere|hidin
 ->fight
 
 = fight
-+ {you_died < 2}  [Fight] -> you_died
-+ {you_died >= 2} [Fight] -> you_won
++ {you_died+pray_to_seymour*0.5 < 2}  [Fight] -> you_died
++ {you_died+pray_to_seymour*0.5 >= 2} [Fight] -> you_won
 
 -
 -> main_menu
@@ -52,7 +53,9 @@ The {&mole|{&nasty|blasted|foul} {&creature|rodent}} is {in here somewhere|hidin
 
 {you_won == 1: The unthinkable happened!}
 
-The enemy screams in agony sinking to the ground.
+{~Efficiently|With a mighty roar|Gracefully|Inspired by Seymours training} you {~swing|stab|slash down|slash up} your {~sword|weapon} {~into his head|through his {~left|right} arm}.
+
+The enemy screams in agony. {~Bleeding|Crying} he {~sinks|falls} to the {~ground|floor|dirt}.
 
 You won!
 
@@ -92,3 +95,13 @@ You died.
 // + Stab
 // + Slash down
 // + Slash up
+
+=== pray_to_seymour ===
+
+You will be rewarded.
+
++ "Thank you good sir." [] 
+-
++ Confidently walk to your home.
+-
+-> main_menu
