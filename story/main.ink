@@ -61,7 +61,7 @@ You won!
 
 Seymour is proud of you.
 
-+ "I am fucking legend!"
++ "I am a fucking legend!"
 
 -> main_menu
 
@@ -92,10 +92,6 @@ You died.
 -
 
 -> main_menu
-// + Swing
-// + Stab
-// + Slash down
-// + Slash up
 
 === pray_to_seymour ===
 
