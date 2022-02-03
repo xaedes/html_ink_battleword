@@ -125,6 +125,6 @@ Forgive my sins, life me out of the depths of my despair. Help me trust my arm a
 -> go_home_stronger
 
 = go_home_stronger
-+ Confidently walk {~back|} to your {~home|domain|cabin|hut|room}.
+- {~Confidently|With new found strength|Feeling a whole dwarf taller} you walk {~back|} to your {~home|domain|cabin|hut|room}.
 -
 -> main_menu
