@@ -97,7 +97,7 @@ You died.
 
 You will be rewarded.
 
-+ "Thank you good sir." [] 
++ "Thank you good Sir." [] 
 -
 + Confidently walk to your home.
 -
