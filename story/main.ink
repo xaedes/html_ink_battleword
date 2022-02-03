@@ -70,7 +70,8 @@ You died.
 
 + ...
 
-- Get good.
+{you_died == 1: What did you expect? These weapons here are as real as the blood that is dropping to the floor. }
+- {~Get good.|You can do this.|Why are you doing this to yourself?}
 
 + Seymour is graceful[]. 
 
@@ -79,7 +80,7 @@ You died.
 + You try to open your eyes[] and see everything swirling around!
 
 -
-+ What the... [] No why?!
++ What the... [] {No why?!|Ahhhh!}
 - Suddenly a loud bang blinds your ears and eyes. 
 
 - Your whole body burns from within through without.
