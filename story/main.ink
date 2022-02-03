@@ -150,9 +150,11 @@ Seymour glances at you.
 -> main_menu
 
 = pray_to_seymour
-Forgive my sins, life me out of the depths of my despair. Help me trust my arm as I thrust to arms."
+\ 
++ Forgive my sins, life me out of the depths of my despair. 
+-
++ Help me trust my arm as I thrust to arms."
 - "Very well then, you will be rewarded."
-
 + "Thank you good Sir." [] 
 -
 -> go_home_stronger
