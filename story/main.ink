@@ -6,7 +6,7 @@
 + Play Whack A Mole [] -> whack_a_mole
 + Fight a real knight of flesh and blood[]. 
   -> fight_a_knight
-+ Pray to Seymour[]. -> pray_to_seymour
++ Visit Seymour[]. -> at_seymours_place
 + Do nothing [] -> main_menu
 + End this madness [] -> game_end
 
@@ -43,8 +43,8 @@ The {&mole|{&nasty|blasted|foul} {&creature|rodent}} is {in here somewhere|hidin
 ->fight
 
 = fight
-+ {you_died+pray_to_seymour*0.5 < 2}  [Fight] -> you_died
-+ {you_died+pray_to_seymour*0.5 >= 2} [Fight] -> you_won
++ {you_died+at_seymours_place.go_home_stronger*0.5 < 2}  [Fight] -> you_died
++ {you_died+at_seymours_place.go_home_stronger*0.5 >= 2} [Fight] -> you_won
 
 -
 -> main_menu
@@ -75,7 +75,7 @@ You died.
 
 + Seymour is graceful[]. 
 
-- The blackness leaves your mind only to leave you in a whirlpool of sensations. 
+- The blackness vanishes from your mind only to leave you in a whirlpool of sensations. 
 
 + You try to open your eyes[] and see everything swirling around!
 
@@ -93,12 +93,38 @@ You died.
 
 -> main_menu
 
-=== pray_to_seymour ===
+=== at_seymours_place ===
 
-You will be rewarded.
+Seymour glances at you.
+
+"What do you want?" he grunts.
+
++ "Sir, what is the secret to achieve power like yours?" [] -> ask_for_tips 
++ "Strengthen my faith, Lord Seymour[."]. -> pray_to_seymour 
++ "Sorry to interrupt you. I gotta go." [] ->
+
+"Get them boy!"
+
+-> main_menu
+
+= pray_to_seymour
+Forgive my sins, life me out of the depths of my despair. Help me trust my arm as I thrust to arms."
+- "Very well then, you will be rewarded."
 
 + "Thank you good Sir." [] 
 -
-+ Confidently walk to your home.
+-> go_home_stronger
+
+= ask_for_tips
+\ 
+
+"Well... Never give up. That's the most important thing to do."
+
++ "I will remember it." []
+-
+-> go_home_stronger
+
+= go_home_stronger
++ Confidently walk {~back|} to your {~home|domain|cabin|hut|room}.
 -
 -> main_menu
