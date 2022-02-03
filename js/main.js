@@ -1,5 +1,5 @@
 (function(storyContent) {
-    var delayParagraph = 100.0;
+    var delayParagraph = 700.0;
     var delayChoice = 100.0;
 
     var story = new inkjs.Story(storyContent);

@@ -39,28 +39,51 @@ The {&mole|{&nasty|blasted|foul} {&creature|rodent}} is {in here somewhere|hidin
 
 === fight_a_knight ===
 \
+->fight
 
+= fight
++ {you_died < 2}  [Fight] -> you_died
++ {you_died >= 2} [Fight] -> you_won
+
+-
+-> main_menu
+
+= you_won
+
+{you_won == 1: The unthinkable happened!}
+
+The enemy screams in agony sinking to the ground.
+
+You won!
+
+Seymour is proud of you.
+
++ "I am fucking legend!"
+
+-> main_menu
+
+= you_died
 You died.
 
-* ...
++ ...
 
 - Get good.
 
-* Seymour is graceful[]. 
++ Seymour is graceful[]. 
 
 - The blackness leaves your mind only to leave you in a whirlpool of sensations. 
 
-* You try to open your eyes[] and see everything swirling around!
++ You try to open your eyes[] and see everything swirling around!
 
 -
-* What the... []
++ What the... [] No why?!
 - Suddenly a loud bang blinds your ears and eyes. 
 
 - Your whole body burns from within through without.
 
 - The pain numbs down.
 
-* You try to open your swollen eyes[] you see something familiar.
++ You try to open your swollen eyes[] you see something familiar.
 
 -
 
