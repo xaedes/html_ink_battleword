@@ -15,10 +15,9 @@
 "Farewell fellow knights."
 
 + Just... one more round, I swear [] -> main_menu
-
-// never!
--
--> END
++ ->
+  // never!
+  -> END
 
 === whack_a_mole ===
 {I heft the hammer.|{~Missed!|Nothing!|No good. Where is he?|Ah-ha! Got him! -> main_menu}}
