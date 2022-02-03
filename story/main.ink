@@ -70,7 +70,7 @@ You died.
 
 + ...
 
-{you_died == 1: What did you expect? These weapons here are as real as the blood that is dropping to the floor. }
+{you_died == 1: What did you expect? These weapons here are as real as your blood that is dripping to the floor. }
 - {~Get good.|You can do this.|Why are you doing this to yourself?}
 
 + Seymour is graceful[]. 
