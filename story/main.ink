@@ -1,3 +1,5 @@
+// ~ SEED_RANDOM(1337)
+
 -> main_menu
 
 === main_menu ===
@@ -5,7 +7,7 @@
 <b>You are {main_menu > 1:back} in your cabin and decide what next to do...</b>
 + Play Whack A Mole [] -> whack_a_mole
 + Fight a real knight of flesh and blood[]. 
-  -> fight_a_knight
+  -> fight_a_knight(2+2*fight_a_knight.you_won)
 + Visit Seymour[]. -> at_seymours_place
 + Do nothing [] -> dreams(->main_menu)
 + End this madness [] -> game_end
@@ -38,16 +40,56 @@ The {&mole|{&nasty|blasted|foul} {&creature|rodent}} is {in here somewhere|hidin
 +   -> 
     -> main_menu
 
-=== fight_a_knight ===
+=== fight_a_knight(enemy_strength) ===
 \
-->fight
+->fight(enemy_strength)
 
-= fight
-+ {you_died+at_seymours_place.go_home_stronger*0.5 < 2}  [Fight] -> you_died
-+ {you_died+at_seymours_place.go_home_stronger*0.5 >= 2} [Fight] -> you_won
+= fight(enemy_strength)
+~ temp my_strength = get_my_strength()
+~ temp min_my_roll = 0
+~ temp max_my_roll = MAX(min_my_roll+1,INT(my_strength))
+~ temp my_roll = RANDOM(min_my_roll, max_my_roll)
+//~ temp enemy_strength = 4
+~ temp min_enemy_roll = 1
+~ temp max_enemy_roll = MAX(min_enemy_roll+1,INT(enemy_strength))
+~ temp enemy_roll = RANDOM(min_enemy_roll, max_enemy_roll)
+~ temp my_strength_adv = my_strength - enemy_strength
+~ temp my_roll_adv = my_roll - enemy_roll
+
+
+// My Strength: {my_strength}
+// 
+// Enemy Strength: {enemy_strength}
+
+{
+  - my_strength_adv < 0: The knight looks frightening.
+  - my_strength_adv == 0: You are not sure what do with that guy.
+  - my_strength_adv > 0: Confidently you point at the enemy.
+  - my_strength_adv > 2: As the enemy advances he stumbles over a rock.
+}
+// {my_roll} vs {enemy_roll}
+
++ [Fight] -> hit(my_roll_adv)
 
 -
 -> main_menu
+
+= hit(my_roll_adv)
+
+{
+  - my_roll_adv < 0: 
+    You try to remember what Seymour told you about parrying.
+  - my_roll_adv == 0: 
+    In the last second you remember that one trick Seymour told you last week.
+  - my_roll_adv > 0: 
+    Wisdom pumps into your veins.
+  - my_roll_adv > 2: 
+    "Seymour be blessed!"
+}
+{
+  - my_roll_adv < 0: -> you_died
+  - my_roll_adv >= 0: -> you_won
+}
 
 = you_won
 
@@ -74,7 +116,7 @@ You died.
 - {~Get good.|You can do this.|Why are you doing this to yourself?}
 + Seymour is graceful[]. 
 
-- The blackness vanishes from your mind only to leave you in a whirlpool of sensations. 
+- The void vanishes from your mind only to leave you in a whirlpool of sensations. {!It is more than you can bear.}
 
 + You try to open your eyes[] and see everything swirling around!
 
@@ -86,7 +128,7 @@ You died.
 
 - The pain numbs down.
 
-+ You try to open your swollen eyes[] you see something familiar.
++ [Try to open your aching eyes] Trying to open your aching eyes, you see something familiar.
 
 -
 
@@ -139,6 +181,12 @@ Forgive my sins, life me out of the depths of my despair. Help me trust my arm a
 -
 -> main_menu
 
+=== function get_my_strength() ===
+~ temp my_strength = 0
+~ my_strength += fight_a_knight.you_died
+~ my_strength += fight_a_knight.hit * 0.5
+~ my_strength += at_seymours_place.go_home_stronger * 0.5
+~ return my_strength
 
 === function print_motivation() ===
 {shuffle:
