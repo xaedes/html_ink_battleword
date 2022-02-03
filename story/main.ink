@@ -218,6 +218,7 @@ The last thing you can remember when you wake, is <>
 {shuffle:
 - the dung covered peasant convention. You wonder where it was.
 - Solaire, the warrier of sunlight. What was this about?
+- Leeeeroooooooooy!
 }
 
 + [back] 
@@ -228,7 +229,7 @@ The last thing you can remember when you wake, is <>
 \ 
 In the corner of your little room, right next to your bed, there is a little scratch post.
 
-Carefully each hit, each win and every defeat have you recorded here. 
+Carefully each hit, each win and every defeat you have recorded here. 
 
 You are proud of the stories the little scratches tell.
 
