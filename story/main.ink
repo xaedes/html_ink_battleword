@@ -2,7 +2,7 @@
 
 === main_menu ===
 \ 
-<b>You are in your cabin and decide what next to do...</b>
+<b>You are {main_menu > 1:back} in your cabin and decide what next to do...</b>
 + Play Whack A Mole [] -> whack_a_mole
 + Fight a real knight of flesh and blood[]. 
   -> fight_a_knight
