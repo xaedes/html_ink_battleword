@@ -217,6 +217,7 @@ On your journey through the mists of minds you encounter many weird things.
 The last thing you can remember when you wake, is <>
 {shuffle:
 - the dung covered peasant convention. You wonder where it was.
+- Solaire, the warrier of sunlight. What was this about?
 }
 
 + [back] 
