@@ -5,6 +5,7 @@
     var story = new inkjs.Story(storyContent);
 
     var storyContainer = document.querySelectorAll('#story')[0];
+    var choicesContainer = document.querySelectorAll('#choices')[0];
 
     function showAfter(delay, el) {
         setTimeout(function() { el.classList.add("show") }, delay);
@@ -57,7 +58,7 @@
             var choiceParagraphElement = document.createElement('p');
             choiceParagraphElement.classList.add("choice");
             choiceParagraphElement.innerHTML = `<a href='#'>${choice.text}</a>`
-            storyContainer.appendChild(choiceParagraphElement);
+            choicesContainer.appendChild(choiceParagraphElement);
 
             // Fade choice in after a short delay
             showAfter(delay, choiceParagraphElement);
@@ -71,7 +72,7 @@
                 event.preventDefault();
 
                 // Remove all existing choices
-                var existingChoices = storyContainer.querySelectorAll('p.choice');
+                var existingChoices = choicesContainer.querySelectorAll('p.choice');
                 for(var i=0; i<existingChoices.length; i++) {
                     var c = existingChoices[i];
                     c.parentNode.removeChild(c);
@@ -84,6 +85,12 @@
                 continueStory();
             });
         });
+
+        // // Create paragraph with anchor element
+        // var choiceParagraphElement = document.createElement('p');
+        // choiceParagraphElement.classList.add("choice");
+        // choiceParagraphElement.innerHTML = `<a href='#'><br/><br/><br/></a>`
+        // choicesContainer.appendChild(choiceParagraphElement);
 
         scrollToBottom();
     }

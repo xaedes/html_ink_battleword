@@ -12,7 +12,10 @@ h1 {
     display: block;
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+}
+#choices.container {
+    margin-bottom:  20%;
 }
 
 p, a {
@@ -31,7 +34,7 @@ p.show {
 }
 
 p.choice {
-    text-align: center;
+    /*text-align: center;*/
 }
 
 a:hover {
