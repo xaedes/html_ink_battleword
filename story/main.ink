@@ -7,8 +7,9 @@
 <b>You are {main_menu > 1:back} in your cabin and decide what next to do...</b>
 + Play Whack A Mole [] -> whack_a_mole
 + Fight a real knight of flesh and blood[]. 
-  -> fight_a_knight(2+2*fight_a_knight.you_won)
+  -> fight_a_knight(get_enemy_strength())
 + Visit Seymour[]. -> at_seymours_place
++ Look at scratch post[]. -> scratch_post
 + Do nothing [] -> dreams(->main_menu)
 + End this madness [] -> game_end
 
@@ -190,6 +191,11 @@ Seymour glances at you.
 ~ my_strength += at_seymours_place.go_home_stronger * 0.5
 ~ return my_strength
 
+=== function get_enemy_strength() ===
+~ temp enemy_strength = 2
+~ enemy_strength += 2 *fight_a_knight.you_won
+~ return enemy_strength
+
 === function print_motivation() ===
 {shuffle:
 - "You are not going to master the rest of your life in one day."
@@ -216,3 +222,29 @@ The last thing you can remember when you wake, is <>
 + [back] 
 - 
 -> goback
+
+=== scratch_post ===
+\ 
+In the corner of your little room, right next to your bed, there is a little scratch post.
+
+Carefully each hit, each win and every defeat have you recorded here. 
+
+You are proud of the stories the little scratches tell.
+
+Like a cat that sharpens it claws, you make scratches for all that matters.
+
+Strikes: {fight_a_knight.hit}
+
+Fought enemies: {fight_a_knight}
+
+Defeated enemies: {fight_a_knight.you_won}
+
+Deaths: {fight_a_knight.you_died}
+
+Would I have to rate my self, I would say I am as strong as {get_my_strength()} moles.
+
+Compared to that, I would expect enemies with a strength of {get_enemy_strength()} moles.
+
++ [back] 
+- 
+-> main_menu
