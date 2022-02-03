@@ -5,13 +5,13 @@
 === main_menu ===
 \ 
 <b>You are {main_menu > 1:back} in your cabin and decide what next to do...</b>
-+ Play Whack A Mole [] -> whack_a_mole
++ Play Whack A Mole[]. -> whack_a_mole
 + Fight a real knight of flesh and blood[]. 
   -> fight_a_knight(get_enemy_strength())
 + Visit Seymour[]. -> at_seymours_place
 + Look at scratch post[]. -> scratch_post
-+ Do nothing [] -> dreams(->main_menu)
-+ End this madness [] -> game_end
++ Do nothing[]. -> dreams(->main_menu)
++ End this madness[]. -> game_end
 
 -
 
@@ -127,11 +127,9 @@ You died.
 
 - Your whole body burns from within through without.
 
-- The pain numbs down.
++ [Try to open your aching eyes] Trying to open your aching eyes the pain numbs down.
 
-+ [Try to open your aching eyes] Trying to open your aching eyes, you see something familiar.
-
--
+- Familiar shapes begin to form in front of you.
 
 -> main_menu
 
@@ -207,6 +205,83 @@ Seymour glances at you.
 - "You are doing great!"
 }
 
+=== function print_int(x) ===
+{
+- x >= 1000:
+  {print_int(x / 1000)} thousand { x mod 1000 > 0:{print_int(x mod 1000)}}
+- x >= 100:
+  {print_int(x / 100)} hundred { x mod 100 > 0:and {print_int(x mod 100)}}
+- x == 0:
+  zero
+- else:
+  { x >= 20:
+      { x / 10:
+          - 2: twenty
+          - 3: thirty
+          - 4: forty
+          - 5: fifty
+          - 6: sixty
+          - 7: seventy
+          - 8: eighty
+          - 9: ninety
+      }
+      { x mod 10 > 0:<>-<>}
+  }
+  { x < 10 || x > 20:
+      { x mod 10:
+          - 1: one
+          - 2: two
+          - 3: three
+          - 4: four
+          - 5: five
+          - 6: six
+          - 7: seven
+          - 8: eight
+          - 9: nine
+      }
+  - else:
+      { x:
+          - 10: ten
+          - 11: eleven
+          - 12: twelve
+          - 13: thirteen
+          - 14: fourteen
+          - 15: fifteen
+          - 16: sixteen
+          - 17: seventeen
+          - 18: eighteen
+          - 19: nineteen
+      }
+  }
+}
+=== function print_num(x) ===
+~ temp integral_part = INT(x)
+~ temp fractional_part = x-integral_part
+~ temp is_half = abs(x - 0.5) < 0.1
+~ temp and_half = abs(fractional_part - 0.5) < 0.1
+{
+- is_half: half a
+- else: {print_int(integral_part)}{and_half: and a half}
+}
+
+=== function is_num_singular(x) ===
+~ temp integral_part = INT(x)
+~ temp fractional_part = x-integral_part
+~ temp is_half = abs(fractional_part - 0.5) < 0.1
+~ temp is_one = x == 1
+~ return is_half || is_one
+
+=== function print_num_unit(x,singular,plural) ===
+{print_num(x)} {is_num_singular(x):{singular}|{plural}}
+
+=== function abs(x) ===
+~ temp result = x
+{
+- x < 0: ~ result = -x
+- else:  ~ result = x
+}
+~ return result
+
 === dreams(->goback) ===
 \
 
@@ -217,9 +292,9 @@ On your journey through the mists of minds you encounter many weird things.
 The last thing you can remember when you wake, is <>
 {shuffle:
 - the dung covered peasant convention. You wonder where it was.
-- Solaire, the warrier of sunlight. What was this about?
+- Solaire, {~glimmering like the Light|a warrier as bright as the sun itself|the adherent to the Lord of Sunlight}. "{~We are amidst strange beings, in a strange land.|The very fabric wavers, and relations shift and obscure.|There's no telling how much longer your world and mine will remain in contact.}" you remember him saying.
 - Leeeeroooooooooy!
-- Farming carrots. They looked to delicious.
+- you tending for a farm of carrots. They looked so delicious.
 }
 
 + [back] 
@@ -229,12 +304,12 @@ The last thing you can remember when you wake, is <>
 === scratch_post ===
 \ 
 In the corner of your little room, right next to your bed, there is a little scratch post.
-
 Carefully each hit, each win and every defeat you have recorded here. 
-
 You are proud of the stories the little scratches tell.
 
-Like a cat that sharpens it claws, you make scratches for all that matters.
+Like a cat that sharpens it claws, you make scratches for all that matters:
+
+Seymours blessings: {at_seymours_place.go_home_stronger}
 
 Strikes: {fight_a_knight.hit}
 
@@ -244,9 +319,10 @@ Defeated enemies: {fight_a_knight.you_won}
 
 Deaths: {fight_a_knight.you_died}
 
-Would I have to rate my self, I would say I am as strong as {get_my_strength()} moles.
 
-Compared to that, I would expect enemies with a strength of {get_enemy_strength()} moles.
+Would I have to rate my self, I would say I am as strong as {print_num_unit(get_my_strength(),"mole","moles")}.
+
+Compared to that, I should expect enemies with a strength of {print_num_unit(get_enemy_strength(),"mole","moles")}.
 
 + [back] 
 - 
