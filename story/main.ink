@@ -294,7 +294,8 @@ The last thing you can remember when you wake, is <>
 - the dung covered peasant convention. You wonder where it was.
 - Solaire, {~glimmering like the Light|a warrier as bright as the sun itself|the adherent to the Lord of Sunlight}. "{~We are amidst strange beings, in a strange land.|The very fabric wavers, and relations shift and obscure.|There's no telling how much longer your world and mine will remain in contact.}" you remember him saying.
 - Leeeeroooooooooy!
-- you tending for a farm of carrots. They looked so delicious.
+- you tending for a farm of carrots. They looked so delicious. Maybe I should take up farming!
+- a fact about Seymour\: he just sees more! Ask Birgir.
 }
 
 + [back] 
