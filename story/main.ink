@@ -154,7 +154,7 @@ Seymour glances at you.
 = get_the_hammer
 \ 
 
-Hastely he goes to a regal on the right side of his room, right besides a closed window. Rays of sunlight that find their way through the cracks revealing a cloud of dust crawling through the air. 
+Hastely he goes to a regal on the right side of his room, right besides a closed window. Rays of sunlight find their way through the cracks, revealing a cloud of dust crawling through the air. 
 
 * [...]
 -
@@ -169,7 +169,12 @@ With a loud bang he flips open the window shuts. The bright sun light blinds you
 * [...]
 -
 
-Your eyes adapt to the shining and see him opening a drawer.
+"But there is something you could do." 
+
+* [...]
+-
+
+Your eyes slowly begin to adapt as you now see him opening a drawer.
 What he pulls out has wooden texture and looks bulky. 
 
 "Here look at this." he commands while forcing it in your hands.
@@ -188,7 +193,7 @@ What he pulls out has wooden texture and looks bulky.
 
 + "Who would have thought that!"
 
-- "Now go take your hammer and beat a mole with this! They dig around the camp everywhere. Creepy bastards."
+- "Now go, take your hammer and beat a mole with this! They dig around the camp everywhere. Creepy bastards."
 
 + "Yes, Sir!"
 
