@@ -1,12 +1,14 @@
 // ~ SEED_RANDOM(1337)
 
+//-> scratch_post
 -> main_menu
+
 
 === main_menu ===
 \ 
 <b>You are {main_menu > 1:back} in your cabin and decide what next to do...</b>
 + Play Whack A Mole[]. -> whack_a_mole
-+ Fight a real knight of flesh and blood[]. 
++ {whack_a_mole > 0} Fight a real knight of flesh and blood[]. 
   -> fight_a_knight(get_enemy_strength())
 + Visit Seymour[]. -> at_seymours_place
 + Look at scratch post[]. -> scratch_post
@@ -139,7 +141,7 @@ Seymour glances at you.
 
 "What do you want?" he grunts.
 
-+ "They keep beating me up..." [] -> ask_for_motivation
++ {fight_a_knight.you_died>2} "They keep beating me up..." [] -> ask_for_motivation
 + "Sir, what is the secret to achieve power like yours?" [] -> ask_for_tips 
 + "Strengthen my faith, Lord Seymour[."]. -> pray_to_seymour 
 + "Sorry to interrupt you. I gotta go." [] ->
@@ -183,7 +185,7 @@ Seymour glances at you.
 -> main_menu
 
 === function get_my_strength() ===
-~ temp my_strength = 0
+~ temp my_strength = 1
 ~ my_strength += fight_a_knight.you_died
 ~ my_strength += fight_a_knight.hit * 0.5
 ~ my_strength += at_seymours_place.go_home_stronger * 0.5
@@ -285,13 +287,13 @@ Seymour glances at you.
 === dreams(->goback) ===
 \
 
-You close your eyes and are lifted away into the land of the dreams.
+You close your eyes and {~drift|are lifted} away into {~nebulous lands far away|the land of the dreams}.
 
 On your journey through the mists of minds you encounter many weird things. 
 
 The last thing you can remember when you wake, is <>
 {shuffle:
-- the dung covered peasant convention. You wonder where it was.
+- a fabulous convention crowded with dung covered peasants. You wonder where it was.
 - Solaire, {~glimmering like the Light|a warrier as bright as the sun itself|the adherent to the Lord of Sunlight}. "{~We are amidst strange beings, in a strange land.|The very fabric wavers, and relations shift and obscure.|There's no telling how much longer your world and mine will remain in contact.}" you remember him saying.
 - Leeeeroooooooooy!
 - you tending for a farm of carrots. They looked so delicious. Maybe I should take up farming!
@@ -304,27 +306,54 @@ The last thing you can remember when you wake, is <>
 
 === scratch_post ===
 \ 
-In the corner of your little room, right next to your bed, there is a little scratch post.
-Carefully each hit, each win and every defeat you have recorded here. 
-You are proud of the stories the little scratches tell.
 
+In the corner of your little room, right next to your bed, there is a little scratch post.
+
+//~ temp has_scratches = true
+~ temp has_scratches = ((at_seymours_place.go_home_stronger > 0) || (fight_a_knight.hit > 0) || (fight_a_knight > 0) || (fight_a_knight.you_won > 0) || (fight_a_knight.you_died > 0) || (whack_a_mole > 0))
+{
+- has_scratches: -> show_marks
+- else : -> no_marks
+}
+
+-> knot_end
+
+= knot_end
+
++ [back] 
+- 
+-> main_menu
+
+= no_marks
+
+{!"It looks a bit empty, when something happens I should record it here."|"This will look amazing!"}
+
+-> knot_end
+
+= show_marks
+
+Carefully each hit, each win and every defeat you have recorded here. 
+You are proud of the stories these marks that can tell.
 Like a cat that sharpens it claws, you make scratches for all that matters:
 
-Seymours blessings: {at_seymours_place.go_home_stronger}
+{at_seymours_place.go_home_stronger > 0:Seymours blessings: {at_seymours_place.go_home_stronger}|}
 
-Strikes: {fight_a_knight.hit}
+{fight_a_knight.hit > 0:Strikes: {fight_a_knight.hit}|}
 
-Fought enemies: {fight_a_knight}
+{fight_a_knight > 0:Fought enemies: {fight_a_knight}|}
 
-Defeated enemies: {fight_a_knight.you_won}
+{fight_a_knight.you_won > 0:Defeated enemies: {fight_a_knight.you_won}|}
 
-Deaths: {fight_a_knight.you_died}
+{fight_a_knight.you_died > 0:Deaths: {fight_a_knight.you_died}|}
 
+{whack_a_mole > 0: -> fight_rating|}
+
+-> knot_end
+
+= fight_rating
 
 Would I have to rate my self, I would say I am as strong as {print_num_unit(get_my_strength(),"mole","moles")}.
 
 Compared to that, I should expect enemies with a strength of {print_num_unit(get_enemy_strength(),"mole","moles")}.
 
-+ [back] 
-- 
--> main_menu
+-> knot_end
