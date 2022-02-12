@@ -7,6 +7,72 @@
     var storyContainer = document.querySelectorAll('#story')[0];
     var choicesContainer = document.querySelectorAll('#choices')[0];
 
+    let PURE = true;
+    let ACTION = false;
+    story.BindExternalFunction("saveSlotIsBlank", saveSlotIsBlank, PURE);
+    story.BindExternalFunction("saveToSlot", saveToSlot, ACTION);
+    story.BindExternalFunction("loadFromSlot", loadFromSlot, ACTION);
+    story.BindExternalFunction("quickSave", quickSave, ACTION);
+    story.BindExternalFunction("quickLoad", quickLoad, ACTION);
+
+    let quickSaveJson = localStorage.getItem("quickSave");
+    function quickSave()
+    {
+        quickSaveJson = story.state.ToJson();
+        localStorage.setItem("quickSave", quickSaveJson);
+    }
+    function quickLoad()
+    {
+        let json = localStorage.getItem("quickSave");
+        if (!json) return false;
+
+        quickSaveJson = json;
+        story.state.LoadJson(quickSaveJson);
+
+        return true;
+    }
+    function saveSlotIsBlank(page)
+    {
+        if (localStorage.getItem("saveSlot_" + page))
+        {
+            console.log("saveSlotIsBlank " + page + " false");
+            return false;
+        }
+        else
+        {
+            console.log("saveSlotIsBlank " + page + " true");
+            return true;
+        }
+    }
+
+    function saveToSlot(page)
+    {
+        console.log("saveToSlot " + page);
+        localStorage.setItem("saveSlot_" + page, quickSaveJson);
+    }
+
+    function loadFromSlot(page)
+    {
+        console.log("loadFromSlot " + page);
+        let saved = localStorage.getItem("saveSlot_" + page);
+
+        var existingChoices = choicesContainer.querySelectorAll('p.choice');
+        for(var i=0; i<existingChoices.length; i++) {
+            var c = existingChoices[i];
+            c.parentNode.removeChild(c);
+        }
+        var existingParagraphs = storyContainer.querySelectorAll('p');
+        for(var i=0; i<existingParagraphs.length; i++) {
+            var c = existingParagraphs[i];
+            c.parentNode.removeChild(c);
+        }
+
+        story.state.LoadJson(saved);
+
+        // continueStory();
+    }
+
+
     function showAfter(delay, el) {
         setTimeout(function() { el.classList.add("show") }, delay);
     }
