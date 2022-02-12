@@ -6,7 +6,7 @@ Seymour glances at you.
 "What do you want?" he grunts.
 
 + {not whack_a_mole} "I want to fight!" -> get_the_hammer
-+ {fight_a_knight.you_died>2} "They keep beating me up..." [] -> ask_for_motivation
++ {fight_a_knight.you_died>1} "They keep beating me up..." [] -> ask_for_motivation
 + "Sir, what is the secret to achieve power like yours?" [] -> ask_for_tips 
 + "Strengthen my faith, Lord Seymour[."]. -> pray_to_seymour 
 + "Sorry to interrupt you. I gotta go." [] ->
