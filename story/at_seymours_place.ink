@@ -5,7 +5,9 @@ Seymour glances at you.
 
 "What do you want?" he grunts.
 
-+ {not whack_a_mole} "I want to fight!" -> get_the_hammer
++ {not whack_a_mole && get_the_hammer} "I want to fight!" []
+  "Then go and beat those moles! Now out." -> main_menu
++ {not whack_a_mole && not get_the_hammer} "I want to fight!" -> get_the_hammer
 + {fight_a_knight.you_died>1} "They keep beating me up..." [] -> ask_for_motivation
 + "Sir, what is the secret to achieve power like yours?" [] -> ask_for_tips 
 + "Strengthen my faith, Lord Seymour[."]. -> pray_to_seymour 
@@ -18,7 +20,7 @@ Seymour glances at you.
 = get_the_hammer
 \ 
 
-Hastely he goes to a regal on the right side of his room, right besides a closed window. Rays of sunlight find their way through the cracks, revealing a cloud of dust crawling through the air. 
+Hastely he goes to a small sidetable on the right side of his room, right besides a closed window. Rays of sunlight find their way through the cracks, revealing a cloud of dust crawling through the air. 
 
 * [...]
 -
