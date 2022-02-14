@@ -3,6 +3,13 @@
 
 Seymour glances at you.
 
+{
+- whack_a_mole.win && not gratulate_on_mole_win: -> gratulate_on_mole_win
+- else: -> options
+}
+
+= options
+
 "What do you want?" he grunts.
 
 + {not whack_a_mole && get_the_hammer} "I want to fight!" []
@@ -16,6 +23,7 @@ Seymour glances at you.
 "Get them boy!"
 
 -> main_menu
+
 
 = get_the_hammer
 \ 
@@ -63,9 +71,17 @@ What he pulls out has wooden texture and looks bulky.
 
 + "Yes, Sir!"
 
-You got a hammer!
+You got a wooden hammer!
 
 -> main_menu
+
+= gratulate_on_mole_win
+
+"You really defeated a mole! Good joob."
+
+"Keep the hammer."
+
+-> options
 
 = pray_to_seymour
 \ 
